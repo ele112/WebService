@@ -41,13 +41,22 @@ Todo instalado ya se puede correr el proyecto de forma local para esto se debe e
 ```
 ionic serve
 ```
-Esto levantara el proyecto en un server de node el cual podra ser visto en http://localhost:8100/, si requiere especificar el puerto donde desea correr el proyecto ejecutar 
+Esto levantara el proyecto en un server de node el cual podra ser visto en http://localhost:8100/, si requiere especificar el puerto donde desea correr el proyecto ejecutar.
+
 ```
 ionic serve --port <PuertoAUtilizar>
 ```
 
 Se recomienda abrir el inspector de elementos y presionar la combinacion de teclas Ctrl + Shift + M, para visualizar en vista movil
 
+**Usuarios**
+admin
+    - usuario: admin
+    - contraseña: admin
+
+usuario
+    - usuarios: user
+    - contraseña: user
 --------------------
 
 ## Correr en el dispositivo
