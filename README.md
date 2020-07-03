@@ -49,14 +49,13 @@ ionic serve --port <PuertoAUtilizar>
 
 Se recomienda abrir el inspector de elementos y presionar la combinacion de teclas Ctrl + Shift + M, para visualizar en vista movil
 
-**Usuarios**
-admin
-    - usuario: admin
-    - contraseña: admin
-
-usuario
-    - usuarios: user
-    - contraseña: user
+### Usuarios
+* Admin: 
+	* usuario: admin
+	* contraseña: admin
+* Usuario
+	* usuario: user
+	* contraseña: user
 --------------------
 
 ## Correr en el dispositivo
