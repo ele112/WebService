@@ -1,0 +1,8 @@
+C:\Users\Alfonso\source\repos\WebService\CapaConexion\bin\Debug\CapaConexion.dll
+C:\Users\Alfonso\source\repos\WebService\CapaConexion\bin\Debug\CapaConexion.pdb
+C:\Users\Alfonso\source\repos\WebService\CapaConexion\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Alfonso\source\repos\WebService\CapaConexion\bin\Debug\System.Data.SqlClient.xml
+C:\Users\Alfonso\source\repos\WebService\CapaConexion\obj\Debug\CapaConexion.csproj.CoreCompileInputs.cache
+C:\Users\Alfonso\source\repos\WebService\CapaConexion\obj\Debug\CapaConexion.csproj.CopyComplete
+C:\Users\Alfonso\source\repos\WebService\CapaConexion\obj\Debug\CapaConexion.dll
+C:\Users\Alfonso\source\repos\WebService\CapaConexion\obj\Debug\CapaConexion.pdb

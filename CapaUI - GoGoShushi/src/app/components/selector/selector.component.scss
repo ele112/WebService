@@ -1,0 +1,40 @@
+.abs-buttons{
+    position: absolute;
+
+    right: 5px;
+    top: 17px;
+
+    div{
+        position: relative;
+        color: white;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        box-shadow: 1px 1px 20px 0px rgba(230,230,230,1);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        ion-icon{
+            zoom: 1;
+            color: rgb(102, 102, 102) !important;
+        }
+    }
+}
+
+
+
+
+.abs-text{
+    position: absolute;
+    top: 42px;
+    right: 35px;
+
+    ion-label{
+        font-size: 24px;
+        font-weight: bold;
+        color: #6e6e6e;
+    }
+
+}

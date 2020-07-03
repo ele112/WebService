@@ -1,0 +1,28 @@
+<ion-content>
+  <div header>
+    <ion-row >
+      <ion-col size="10" align="left">
+        <h2>Administrador</h2>
+      </ion-col>
+      <ion-col size="2"  align="right">
+        <ion-button fill="clear" (click)="cerrarSesion($event)">
+          <ion-icon slot="icon-only" style="color: #555555; zoom: .8;"  name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    
+  </div>
+
+
+<ion-row>
+  <ion-col size="6" *ngFor="let item of ELEMENTS">
+    <ion-card card (click)="showModal(item.value)">
+      <div align="center">
+        <ion-img  [src]="item.src" class="icon-image"></ion-img>
+        <p>{{item.name}}</p>
+      </div>
+    </ion-card>
+  </ion-col>
+</ion-row>
+
+</ion-content>

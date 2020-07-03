@@ -1,0 +1,193 @@
+
+
+[header]{
+  // border: 1px solid red;
+  margin-top: 10px !important;
+  width: 100% ;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+
+[perfil]{
+  border-radius: 50%;
+  width:  40px;
+  height: 40px;
+  border: 2px solid #494949;
+  -webkit-box-shadow: 1px 1px 5px 0px rgba(161,161,161,1);
+  -moz-box-shadow: 1px 1px 5px 0px rgba(161,161,161,1);
+  box-shadow: 1px 1px 5px 0px rgba(161,161,161,1);
+}
+
+[black]{
+  color: #707070;
+  font-weight: bold;
+}
+
+[gris]{
+  color: #52575c;
+}
+
+[border]{
+  background: rgb(255, 255, 255);
+}
+
+[searchbar]{
+  padding: 0px;
+  width: 100%;
+  ion-searchbar{
+    height: 75px !important;
+    background: #F8F8FA !important;
+  
+  }
+
+}
+
+[banner]{
+  width: 100% !important;
+  padding-left: 17px;
+  padding-right: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  [title]{
+    color: #707070;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  span{
+    font-size: 15px;
+    color:#2b2b2b;
+  }
+
+}
+
+[promos-body]{
+  width: 100% !important;
+
+  ion-card{
+    // height: 75%   !important;
+    width:  100%  !important;
+    height: 220px !important;
+    padding: 12px;
+  }
+
+  .img{
+    background-size: cover;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 70% !important;
+    background: #f88800;
+    border-radius: 10px;
+
+  }
+
+  [descripcion]{
+    margin-top: 5px;
+    text-align: left;
+
+    [promotitle] {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    [promodesc]{
+      font-size: 10px;
+
+    }
+  }
+  
+
+}
+
+[categories]{
+  width: 100% !important;
+
+  ion-card{
+    height: 80%   !important;
+    width:  100%  !important;
+    height: 180px !important;
+    // border: 1px solid #2AC769;
+
+  }
+
+  img{
+    width: 100% !important;
+    height: 70% !important;
+    background: #707070;
+  }
+
+}
+
+[recomendado]{
+
+  width: 100% !important;
+
+  ion-col{
+    display: flex;
+    justify-content: center;
+  }
+
+  ion-card{
+    margin-top: -10px;
+    height: 80%   !important;
+    width:  100%  !important;
+    height: 230px !important;
+
+
+  }
+
+  ion-button{
+    font-weight: bold;
+  }
+}
+
+[fill]{
+  font-weight: bold;
+  background: #2b2b2b !important;
+  color: white !important;
+  border-radius: 10px;
+  padding: 5px;
+
+}
+
+ion-card{
+  // -webkit-box-shadow: 5px 2px 25px -11px rgba(137,214,168,1);
+  // -moz-box-shadow: 5px 2px 25px -11px rgba(137,214,168,1);
+  // box-shadow: 5px 2px 25px -11px rgba(137,214,168,1);
+}
+
+ion-row{
+  width: 100% !important;
+}
+
+
+
+@media (min-device-width: 800px) {
+  [wrapper]{
+    background-color: #FAFAFA;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 5px 2px 25px 0px rgb(179, 179, 179);
+    border-radius: 10px;
+    width: 900px !important;
+    height: 90%;
+    overflow: auto;
+
+
+  }
+  [promos-body]{
+    ion-card{
+      width: 80% !important;
+    }
+  }
+
+  
+
+
+}

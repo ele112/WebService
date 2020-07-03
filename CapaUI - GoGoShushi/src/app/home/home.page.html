@@ -1,0 +1,89 @@
+
+<ion-content>
+  
+  <div wrapper>
+    
+      <div header>
+        <ion-row >
+          <ion-col size="10" align="left">
+            <label black> <strong>Casino</strong> </label><br>
+            <label gris> Paradiso, San Joaquin</label>
+          </ion-col>
+          <ion-col size="2"  align="right">
+            <img perfil (click)="presentPopover($event)" src="https://i7.pngguru.com/preview/178/419/741/computer-icons-avatar-login-user-avatar.jpg" alt="">
+          </ion-col>
+        </ion-row>
+        
+      </div>
+      <div searchbar (click)="presentSearchView()">
+        <ion-searchbar  border  disabled="true" placeholder="Search..."></ion-searchbar>
+      </div>
+    
+      <div banner>
+        <label black title>Promociones</label>
+        <p>Ver mas</p>
+      </div>
+    
+      <div promos-body>
+        <ion-slides  [options]="slideConfig">
+          <ion-slide *ngFor="let slide of [1,2,3,4,5]">
+            <ion-card>
+              <div class="img">
+                <img src="https://img.freepik.com/psd-gratis/plantilla-banner-comida-mexicana_23-2148370421.jpg?size=626&ext=jpg" alt="">
+              </div>
+              <div descripcion>
+                <ion-label promotitle> Promo 3x2 </ion-label> <br>
+                <ion-label promodesc> Una descripcion corta de la promocion y los productos que lleva </ion-label>
+    
+              </div>
+    
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+    
+      </div>
+    
+      <div banner>
+        <label black title>Categorias</label>
+        <p (click)="navigateTo('productos')">Ver todas</p>
+      </div>
+    
+      <div categories>
+    
+        <ion-slides  [options]="slideConfigMedium">
+          <ion-slide *ngFor="let slide of [1,2,3,4,5]">
+            <ion-card>
+              <div class="img-wrapper">
+                <img src="" alt="">
+              </div>
+              
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+    
+      </div>
+      
+      <div banner >
+        <label black title>Recomendados</label>
+        <p fill [routerLink]="['/productos']" routerDirection="forward">Ver todos</p>
+      </div>
+      <br><br>
+      <div recomendado>
+    
+        <ion-row align="center">
+          <ion-col size="6" *ngFor="let slide of [1,2,3,4,5,6]">
+            <ion-card>
+              <label>{{slide}}</label>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-button expand="full" (click)="navigateTo('productos')">
+          Ver todos los productos
+        </ion-button>
+      </div>
+
+  </div>
+
+</ion-content>
+
+<!-- <app-footer></app-footer> -->

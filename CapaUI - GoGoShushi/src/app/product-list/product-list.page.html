@@ -1,0 +1,78 @@
+<ion-header translucent="true">
+
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-icon name="log-out-outline" [style.zoom]="1.4" (click)="logout()"></ion-icon>
+    </ion-buttons>
+    <ion-title title>Productos</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <section>
+    <ion-row *ngFor="let carta of cartas" productos (click)="navigate(carta)">
+      <ion-col>
+        <img [src]="carta.urlFoto" class="image-list">
+      </ion-col>
+
+      <ion-col size="6" class="border-bottom">
+        <div class="product-detail">
+          <div>
+            <ion-label title> {{carta.nombre}}</ion-label><br>
+            <ion-label small> {{carta.descripcion | truncateText: 30 }}</ion-label>
+          </div>
+          <ion-label precio>${{carta.precio_unidad | CustomeCurrency }}</ion-label>
+        </div>
+      </ion-col>
+
+      <ion-col size="2" class="border-bottom">
+
+        <ng-container>
+          <div class="abs-buttons">
+            <div color="white" (click)="modifySelect('add', carta);$event.stopPropagation();">
+              <ion-icon name="add-outline" ></ion-icon>
+            </div><br>
+            <div color="white" (click)="modifySelect('rm', carta);$event.stopPropagation();">
+              <ion-icon name="remove-outline" ></ion-icon>
+            </div>
+          </div>
+        
+          <ion-text class="abs-text">
+            <ion-label>{{carta.cantidad}}</ion-label>
+          </ion-text>
+        </ng-container>
+
+
+      </ion-col>
+
+    </ion-row>
+  </section>
+
+</ion-content>
+
+
+<ion-footer>
+
+  <ion-row>
+
+
+    <ion-col size="5" center>
+      <div>
+        <ion-label class="foot-small-title">Total</ion-label><br>
+        <ion-label class="foot-price">${{_carrito.total | CustomeCurrency}}</ion-label>
+      </div>
+    </ion-col>
+
+    <ion-col size="7" class="wrap-foot">
+      <ion-button class="wrap-cart" expand="block" shape="round" align="right" (click)="navigateTo('/carrito')">
+        <ion-label>Carrito</ion-label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <ion-icon name="basket-outline"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+
+
+</ion-footer>

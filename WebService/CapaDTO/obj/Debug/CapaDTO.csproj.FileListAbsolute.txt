@@ -1,0 +1,10 @@
+C:\Users\Alfonso\source\repos\WebService\CapaDTO\bin\Debug\CapaDTO.dll
+C:\Users\Alfonso\source\repos\WebService\CapaDTO\bin\Debug\CapaDTO.pdb
+C:\Users\Alfonso\source\repos\WebService\CapaDTO\bin\Debug\xunit.abstractions.dll
+C:\Users\Alfonso\source\repos\WebService\CapaDTO\bin\Debug\xunit.core.dll
+C:\Users\Alfonso\source\repos\WebService\CapaDTO\bin\Debug\xunit.abstractions.xml
+C:\Users\Alfonso\source\repos\WebService\CapaDTO\bin\Debug\xunit.core.xml
+C:\Users\Alfonso\source\repos\WebService\CapaDTO\obj\Debug\CapaDTO.csproj.CoreCompileInputs.cache
+C:\Users\Alfonso\source\repos\WebService\CapaDTO\obj\Debug\CapaDTO.csproj.CopyComplete
+C:\Users\Alfonso\source\repos\WebService\CapaDTO\obj\Debug\CapaDTO.dll
+C:\Users\Alfonso\source\repos\WebService\CapaDTO\obj\Debug\CapaDTO.pdb

@@ -1,0 +1,379 @@
+<ion-content #content>
+
+
+  <!-- Cartas -->
+  <ng-container *ngIf="crud == 'carta'">
+    <div align="center">
+      <h2>Cartas</h2>
+      <ion-icon class="icon-close" name="close-outline" (click)="close()"></ion-icon>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input name="nombre" type="text" placeholder="Nombre de la carta" [(ngModel)]="carta.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-textarea name="descripcion" type="text" placeholder="Descripcion de la carta" [(ngModel)]="carta.descripcion">
+      </ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input name="precio" type="number" placeholder="Precio de la carta" [(ngModel)]="carta.precio_unidad"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Ingredientes</ion-label>
+      <ion-select placeholder="Seleccione" id="multiValue" multiple="true" name="ingredientes"  [(ngModel)]="carta.ingredientes">
+        <ion-select-option 
+          *ngFor="let ingrediente of ingredientes" 
+          [value]="ingrediente.id" 
+          [selected]="ingrediente.id">{{ingrediente.nombre}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Imagen</ion-label><br><br>
+      <input id="uploadBtn" (change)="subirImagen($event.target.files)" type="file" class="upload" />
+    </ion-item>
+    <br><br>
+    <div padding align="center">
+      <ion-button [disabled]="isModifyCarta" style="width: 90%;" size="large" type="submit" expand="block"
+        (click)="guardarCarta()">Guardar</ion-button>
+    </div>
+    <br>
+    <div class="ion-padding">
+      <h2>
+        Cartas
+      </h2>
+    </div>
+    <ion-list>
+      <ion-item lines="none" align="center" *ngIf="cartas.length == 0">
+        <ion-label>No se encontraron Cartas</ion-label>
+      </ion-item>
+
+      <ion-item-sliding *ngFor="let carta of cartas" (click)="modificarCarta(carta);$event.stopPropagation();">
+        <ion-item-options side="end">
+          <ion-item-option color="danger" expandable (click)="eliminarCarta(carta.id);$event.stopPropagation();">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item lines="none" (click)="modificarCarta">
+          <ion-row productos>
+            <ion-col size="5">
+              <img [src]="carta.urlFoto" class="image-list">
+            </ion-col>
+
+            <ion-col size="7" class="border-bottom">
+              <div class="product-detail">
+                <div>
+                  <label title> {{carta.nombre}}</label><br>
+                  <label small>{{carta.descripcion}}</label>
+                </div>
+              </div>
+            </ion-col>
+
+          </ion-row>
+
+        </ion-item>
+
+      </ion-item-sliding>
+    </ion-list>
+  </ng-container>
+
+
+
+  <!-- Ingredientes -->
+  <ng-container *ngIf="crud == 'ingrediente'">
+    <div align="center">
+      <h2>Ingredientes</h2>
+      <ion-icon class="icon-close" name="close-outline" (click)="close()"></ion-icon>
+    </div>
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input name="nombre" type="text" placeholder="Nombre del ingrediente" [(ngModel)]="ingrediente.nombre">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-textarea name="descripcion" type="text" placeholder="Descripcion del ingrediente"
+        [(ngModel)]="ingrediente.descripcion">
+      </ion-textarea>
+    </ion-item>
+    <br>
+    <div class="ion-padding">
+      <ion-button size="large" *ngIf="!isModifyIngrediente" type="submit" expand="block" (click)="guardarIngrediente()">
+        Guardar</ion-button>
+      <ion-button size="large" *ngIf="isModifyIngrediente" type="submit" expand="block"
+        (click)="guardarIngredienteModificado()">Modificar</ion-button>
+    </div>
+
+
+    <br>
+    <hr>
+    <ion-list>
+      <ion-item lines="none" align="center" *ngIf="ingredientes.length == 0">
+        <ion-label>No se encontraron ingredientes</ion-label>
+      </ion-item>
+      <ion-item-sliding *ngFor="let ingrediente of ingredientes"
+        (click)="modificarIngrediente(ingrediente);$event.stopPropagation();">
+        <ion-item-options side="end">
+          <ion-item-option color="danger" expandable
+            (click)="eliminarIngrediente(ingrediente.id);$event.stopPropagation();">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item>
+          <ion-label>
+            <p><strong>Nombre</strong>: {{ingrediente.nombre}}</p>
+            <p><strong>Descripcion</strong>: {{ingrediente.descripcion}}</p>
+          </ion-label>
+        </ion-item>
+
+      </ion-item-sliding>
+    </ion-list>
+
+  </ng-container>
+
+  <!-- Promociones -->
+  <ng-container *ngIf="crud == 'promo'">
+    <div align="center">
+      <h2>Promocion</h2>
+      <ion-icon class="icon-close" name="close-outline" (click)="close()"></ion-icon>
+    </div>
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input name="nombre" type="text" placeholder="Nombre de la promocion" [(ngModel)]="promocion.nombre">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-textarea name="descripcion" type="text" placeholder="Descripcion de la promocion"
+        [(ngModel)]="promocion.descripcion">
+      </ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">% Descuento</ion-label>
+      <ion-input name="porcDescuento" type="text" maxlength="2" placeholder="Precio de la promocion"
+        [(ngModel)]="promocion.porc_descuento"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Valor Máx descuento</ion-label>
+      <ion-input name="maxDescuento" type="number" placeholder="Precio de la promocion"
+        [(ngModel)]="promocion.max_descuento"></ion-input>
+    </ion-item>
+    <br>
+    <div class="ion-padding" align="center">
+      <ion-button *ngIf="!isModifyPromo" size="large" type="submit" expand="block" (click)="guardarPromo()">Guardar
+      </ion-button>
+      <ion-button *ngIf="isModifyPromo" size="large" type="submit" expand="block" (click)="guardarModificacionPromo()">
+        Modificar</ion-button>
+    </div>
+
+    <br>
+    <div class="ion-padding">
+      <h2>
+        Promociones
+      </h2>
+    </div>
+    <ion-list>
+      <ion-item lines="none" align="center" *ngIf="promociones.length == 0">
+        <ion-label>No se encontraron promociones</ion-label>
+      </ion-item>
+      <ion-item-sliding *ngFor="let promo of promociones" (click)="modificarPromo(promo);$event.stopPropagation();">
+        <ion-item-options side="end">
+          <ion-item-option color="danger" expandable (click)="eliminarPromo(promo.id);$event.stopPropagation();">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item>
+          <ion-label>
+            <p><strong>Nombre</strong>: {{promo.nombre}}</p>
+            <p><strong>Descripcion</strong>: {{promo.descripcion}}</p>
+            <p><strong>% Descuento</strong>: {{promo.porc_descuento}}</p>
+            <p><strong>Max Descuento</strong>: {{promo.max_descuento}}</p>
+          </ion-label>
+          <ion-note slot="end">
+            <ion-icon name="copy-outline"></ion-icon>
+          </ion-note>
+        </ion-item>
+
+      </ion-item-sliding>
+    </ion-list>
+
+  </ng-container>
+
+  <!-- Repartidores -->
+  <ng-container *ngIf="crud == 'repartidor'">
+    <div align="center">
+      <h2>Repartidor</h2>
+      <ion-icon class="icon-close" name="close-outline" (click)="close()"></ion-icon>
+    </div>
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input name="nombre" type="text" placeholder="Nombre de la carta" [(ngModel)]="repartidor.nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Apellidos</ion-label>
+      <ion-input name="apellidos" type="text" placeholder="Escriba los apellidos" [(ngModel)]="repartidor.apellidos">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Celular</ion-label>
+      <ion-input name="celular" type="number" placeholder="Escriba el celular" [(ngModel)]="repartidor.celular">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Rut</ion-label>
+      <ion-input name="rut" type="text" maxlength="8" placeholder="11.111.111" formatRut required
+        [(ngModel)]="repartidor.rut"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">DV</ion-label>
+      <ion-input name="dv" type="text" maxlength="1" placeholder="Digito verificador" [(ngModel)]="repartidor.dv">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">email</ion-label>
+      <ion-input name="email" type="email" placeholder="Escriba el email" [(ngModel)]="repartidor.email"></ion-input>
+    </ion-item>
+    <br>
+    <div class="ion-padding" align="center">
+      <ion-button *ngIf="!isModifyRepartidor" size="large" type="submit" expand="block" (click)="guardarRepartidor()">
+        Guardar</ion-button>
+      <ion-button *ngIf="isModifyRepartidor" size="large" type="submit" expand="block"
+        (click)="guardarRepartidorModificado()">Modificar</ion-button>
+    </div>
+
+    <br>
+    <div class="ion-padding">
+      <h2>
+        Repartidores
+      </h2>
+    </div>
+    <ion-list>
+      <ion-item lines="none" align="center" *ngIf="repartidores.length == 0">
+        <ion-label>No se encontraron repartidores</ion-label>
+      </ion-item>
+      <ion-item-sliding *ngFor="let repartidor of repartidores"
+        (click)="modificarRepartidor(repartidor);$event.stopPropagation();">
+        <ion-item-options side="end">
+          <ion-item-option color="danger" expandable
+            (click)="eliminarRepartidor(repartidor.id);$event.stopPropagation();">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item>
+          <ion-label>
+            <p><strong>Nombre</strong>: {{repartidor.nombre}}</p>
+            <p><strong>Apellidos</strong>: {{repartidor.apellidos}}</p>
+            <p><strong>Celular</strong>: {{repartidor.celular}}</p>
+            <p><strong>Rut</strong>: {{repartidor.rut}}-{{repartidor.dv}}</p>
+            <p><strong>Email</strong>: {{repartidor.email}}</p>
+          </ion-label>
+          <ion-note slot="end">
+            <ion-icon name="copy-outline"></ion-icon>
+          </ion-note>
+        </ion-item>
+
+      </ion-item-sliding>
+    </ion-list>
+
+  </ng-container>
+
+
+  <!-- Estados -->
+  <ng-container *ngIf="crud == 'estado'">
+    <div align="center">
+      <h2>Estados</h2>
+      <ion-icon class="icon-close" name="close-outline" (click)="close()"></ion-icon>
+    </div>
+    <br>
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input name="nombre" type="text" placeholder="Nombre del estado" [(ngModel)]="estado.nombre">
+      </ion-input>
+    </ion-item>
+    <br>
+    <div class="ion-padding">
+      <ion-button size="large" *ngIf="!isModifyEstado" type="submit" expand="block" (click)="guardarEstado()">Guardar
+      </ion-button>
+      <ion-button size="large" *ngIf="isModifyEstado" type="submit" expand="block" (click)="guardarEstadoModificado()">
+        Modificar</ion-button>
+    </div>
+
+
+    <br>
+    <hr>
+    <ion-list>
+      <ion-item lines="none" align="center" *ngIf="estados.length == 0">
+        <ion-label>No se encontraron estados</ion-label>
+      </ion-item>
+      <ion-item-sliding *ngFor="let estado of estados" (click)="modificarEstado(estado);$event.stopPropagation();">
+        <ion-item-options side="end">
+          <ion-item-option color="danger" expandable (click)="eliminarEstado(estado.id);$event.stopPropagation();">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+        <ion-item>
+          <ion-label>
+            <p><strong>Nombre</strong>: {{estado.nombre}}</p>
+          </ion-label>
+        </ion-item>
+
+      </ion-item-sliding>
+    </ion-list>
+
+  </ng-container>
+
+  <!-- Asignar Promocion -->
+  <ng-container *ngIf="crud == 'asignaPromo'">
+    <div align="center">
+      <h2>Cartas Disponibles</h2>
+      <ion-icon class="icon-close" name="close-outline" (click)="close()"></ion-icon>
+    </div>
+
+    <br>
+    <ion-list>
+      <section>
+        <ion-row *ngFor="let carta of cartas; let i = index" productos>
+          <ion-col>
+            <img [src]="carta.urlFoto" class="image-list">
+          </ion-col>
+
+          <ion-col size="4" class="border-bottom">
+            <div class="product-detail">
+              <div>
+                <ion-label title>{{carta.nombre}}</ion-label><br>
+                <ion-label small>{{carta.descripcion}}</ion-label>
+              </div>
+            </div>
+          </ion-col>
+
+          <ion-col size="4" class="border-bottom">
+            <ion-item lines="none">
+              <ion-icon name="cash-outline" slot="end" [style.color]="carta.id_promocion == 0 ? '#727272' : '#2dd36f'"
+                [style.zoom]=".8"></ion-icon>
+              <ion-select name="ingredientes" (ionChange)="asignaPromocion($event, i)">
+                <ion-select-option value="null">Ninguna</ion-select-option>
+                <ion-select-option *ngFor="let promo of promociones" [value]="promo.id">{{promo.nombre}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+      </section>
+    </ion-list>
+
+  </ng-container>
+
+
+</ion-content>

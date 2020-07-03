@@ -1,0 +1,51 @@
+
+<ion-header translucent="true">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-title title>Detalle</ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content hidenav-sh-content>
+
+  <section class="padding">
+    <div class="head-title">
+      <img [src]="carta.urlFoto" alt="">
+    </div>
+    <div class="space-beetween">
+      <div>
+        <ion-icon name="fast-food-outline"></ion-icon>&nbsp;
+        <ion-label title>{{carta.nombre}}</ion-label>
+      </div>
+      <ion-label price>${{carta.precio_unidad | CustomeCurrency }}</ion-label>
+    </div>
+    <div description class="ion-padding">
+      {{carta.descripcion}}
+    </div>
+
+    <div ingredents>
+      <ion-icon name="restaurant-outline"></ion-icon>
+      &nbsp;&nbsp;<ion-label>Ingredientes</ion-label>
+      <br>
+      <ng-container>
+        <ion-item *ngFor="let ingredente of carta.ingredientes" style="padding: 0">{{ingredente.nombre}}</ion-item>
+      </ng-container>
+
+    </div>
+  </section>
+
+</ion-content>
+<!-- <ion-footer>
+
+  <div style="width: 100%" align="center">
+    <ion-button expand="block" full-btn>
+      Añadir al carrito
+    </ion-button>
+  </div>
+
+</ion-footer> -->
